@@ -74,17 +74,17 @@ export default function App() {
   return (
     <div className="flex flex-col min-h-screen bg-bg text-text">
       <div className="container">
-        <header className="flex justify-between items-center mb-6 h-12">
+        <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 py-4">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <Icon name="trending-up" size="sm" className="text-white" />
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-sm">
+              <Icon name="trending-up" size="md" className="text-white" />
             </div>
             <div>
               <h1 className="display text-primary">Memecoin Pulse</h1>
-              <p className="caption text-muted">Spot pumps before they happen</p>
+              <p className="caption">Spot pumps before they happen</p>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <Wallet>
               <ConnectWallet>
                 <Name className="text-inherit" />
@@ -103,53 +103,65 @@ export default function App() {
           </div>
         </header>
 
-        <nav className="flex space-x-1 mb-6 bg-surface rounded-lg p-1">
+        <nav className="flex space-x-1 mb-6 bg-surface rounded-lg p-1 shadow-sm">
           <button
             onClick={() => setActiveTab('trending')}
-            className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors duration-base ${
+            className={`flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all duration-base ${
               activeTab === 'trending'
-                ? 'bg-primary text-white'
+                ? 'bg-primary text-white shadow-sm'
                 : 'text-text hover:bg-primary/10'
             }`}
+            aria-selected={activeTab === 'trending'}
+            role="tab"
           >
             <Icon name="trending-up" size="sm" className="inline mr-2" />
-            Trending
+            <span className="hidden xs:inline">Trending</span>
           </button>
           <button
             onClick={() => setActiveTab('alerts')}
-            className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors duration-base ${
+            className={`flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all duration-base ${
               activeTab === 'alerts'
-                ? 'bg-primary text-white'
+                ? 'bg-primary text-white shadow-sm'
                 : 'text-text hover:bg-primary/10'
             }`}
+            aria-selected={activeTab === 'alerts'}
+            role="tab"
           >
             <Icon name="bell" size="sm" className="inline mr-2" />
-            Alerts
+            <span className="hidden xs:inline">Alerts</span>
           </button>
           <button
             onClick={() => setActiveTab('charts')}
-            className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors duration-base ${
+            className={`flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all duration-base ${
               activeTab === 'charts'
-                ? 'bg-primary text-white'
+                ? 'bg-primary text-white shadow-sm'
                 : 'text-text hover:bg-primary/10'
             }`}
+            aria-selected={activeTab === 'charts'}
+            role="tab"
           >
             <Icon name="bar-chart" size="sm" className="inline mr-2" />
-            Charts
+            <span className="hidden xs:inline">Charts</span>
           </button>
         </nav>
 
-        <main className="flex-1">
-          {activeTab === 'trending' && <TrendingList />}
-          {activeTab === 'alerts' && <AlertsPanel />}
-          {activeTab === 'charts' && <TrendChart />}
+        <main className="flex-1 min-h-[60vh]">
+          <div className={`transition-opacity duration-base ${activeTab === 'trending' ? 'opacity-100' : 'opacity-0 hidden'}`}>
+            {activeTab === 'trending' && <TrendingList />}
+          </div>
+          <div className={`transition-opacity duration-base ${activeTab === 'alerts' ? 'opacity-100' : 'opacity-0 hidden'}`}>
+            {activeTab === 'alerts' && <AlertsPanel />}
+          </div>
+          <div className={`transition-opacity duration-base ${activeTab === 'charts' ? 'opacity-100' : 'opacity-0 hidden'}`}>
+            {activeTab === 'charts' && <TrendChart />}
+          </div>
         </main>
 
-        <footer className="mt-8 pt-4 flex justify-center border-t border-primary/10">
+        <footer className="mt-8 pt-4 flex justify-center border-t border-border">
           <Button
             variant="ghost"
             size="sm"
-            className="text-muted text-xs"
+            className="text-text-secondary text-xs hover:text-primary"
             onClick={() => openUrl('https://base.org/builders/minikit')}
           >
             Built on Base with MiniKit

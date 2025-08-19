@@ -6,45 +6,67 @@
   :root {
     --primary: 210 70% 50%;
     --accent: 140 60% 45%;
-    --bg: 200 25% 85%;
-    --surface: 200 25% 95%;
+    --bg: 200 25% 95%;
+    --surface: 200 25% 98%;
     --text: 210 25% 15%;
+    --text-secondary: 210 15% 35%;
     --success: 140 60% 45%;
     --warning: 30 70% 50%;
     --muted: 210 15% 60%;
+    --border: 210 20% 85%;
+    --focus: 210 70% 60%;
   }
   
   body {
     @apply bg-bg text-text;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Improved focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-focus ring-offset-2 ring-offset-surface;
   }
 }
 
 @layer components {
+  /* Button styles */
   .btn-primary {
-    @apply bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md transition-colors duration-base;
+    @apply bg-primary hover:bg-primary/90 active:bg-primary/80 text-white px-4 py-2 rounded-md transition-colors duration-base shadow-sm;
   }
   
   .btn-secondary {
-    @apply bg-surface hover:bg-surface/80 text-text px-4 py-2 rounded-md border border-primary/20 transition-colors duration-base;
+    @apply bg-surface hover:bg-surface/80 active:bg-surface/70 text-text px-4 py-2 rounded-md border border-border transition-colors duration-base shadow-sm;
   }
   
+  /* Card styles with improved hierarchy */
   .card {
-    @apply bg-surface border border-primary/10 rounded-lg p-lg shadow-card;
+    @apply bg-surface border border-border rounded-lg p-lg shadow-card transition-shadow duration-base;
   }
   
   .card-featured {
-    @apply bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 shadow-modal;
+    @apply bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 shadow-card hover:shadow-modal;
   }
   
+  .card-interactive {
+    @apply hover:shadow-modal cursor-pointer;
+  }
+  
+  /* List item styles */
   .list-item {
-    @apply flex items-center justify-between p-md bg-surface rounded-md border border-primary/10 hover:border-primary/20 transition-colors duration-base;
+    @apply flex items-center justify-between p-md bg-surface rounded-md border border-border hover:border-primary/20 transition-all duration-base;
   }
   
   .list-item-trend {
     @apply border-l-4 border-l-accent;
   }
   
+  .list-item-active {
+    @apply bg-primary/5;
+  }
+  
+  /* Toggle switch */
   .alert-toggle {
     @apply w-12 h-6 bg-muted rounded-full relative cursor-pointer transition-colors duration-base;
   }
@@ -54,31 +76,70 @@
   }
   
   .alert-toggle::after {
-    @apply content-[''] absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-base;
+    @apply content-[''] absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-base;
   }
   
   .alert-toggle-active::after {
     @apply transform translate-x-6;
   }
   
+  /* Form elements */
+  .input {
+    @apply w-full px-3 py-2 bg-bg border border-border rounded-md focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all duration-base;
+  }
+  
+  .label {
+    @apply block text-sm font-medium text-text-secondary mb-1;
+  }
+  
+  /* Typography */
   .display {
-    @apply text-3xl font-bold;
+    @apply text-3xl font-bold tracking-tight;
   }
   
   .heading {
-    @apply text-xl font-semibold;
+    @apply text-xl font-semibold tracking-tight;
+  }
+  
+  .subheading {
+    @apply text-lg font-medium;
   }
   
   .body {
-    @apply text-base font-normal tracking-wide;
+    @apply text-base font-normal;
   }
   
   .caption {
-    @apply text-sm font-light;
+    @apply text-sm text-text-secondary;
   }
   
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-success {
+    @apply bg-success/20 text-success;
+  }
+  
+  .badge-warning {
+    @apply bg-warning/20 text-warning;
+  }
+  
+  .badge-primary {
+    @apply bg-primary/20 text-primary;
+  }
+  
+  /* Layout */
   .container {
-    @apply max-w-screen-lg mx-auto px-4 py-8;
+    @apply max-w-screen-lg mx-auto px-4 py-6 md:py-8;
+  }
+  
+  .section {
+    @apply mb-6;
+  }
+  
+  .divider {
+    @apply border-t border-border my-4;
   }
 }
 
@@ -90,4 +151,19 @@
 @keyframes slideUp {
   from { transform: translateY(10px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(10px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
