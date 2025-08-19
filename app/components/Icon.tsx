@@ -11,13 +11,30 @@ import {
   AlertTriangle,
   Zap,
   Eye,
-  Settings
+  Settings,
+  Info,
+  HelpCircle,
+  ChevronDown,
+  ChevronUp,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  RefreshCw,
+  Filter,
+  Search,
+  ExternalLink,
+  Calendar,
+  Clock,
+  Star,
+  Heart,
+  Share2
 } from 'lucide-react';
 
 interface IconProps {
   name: string;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  onClick?: () => void;
 }
 
 const icons = {
@@ -32,9 +49,25 @@ const icons = {
   'zap': Zap,
   'eye': Eye,
   'settings': Settings,
+  'info': Info,
+  'help': HelpCircle,
+  'chevron-down': ChevronDown,
+  'chevron-up': ChevronUp,
+  'chevron-left': ChevronLeft,
+  'chevron-right': ChevronRight,
+  'close': X,
+  'refresh': RefreshCw,
+  'filter': Filter,
+  'search': Search,
+  'external-link': ExternalLink,
+  'calendar': Calendar,
+  'clock': Clock,
+  'star': Star,
+  'heart': Heart,
+  'share': Share2,
 };
 
-export function Icon({ name, size = 'md', className = '' }: IconProps) {
+export function Icon({ name, size = 'md', className = '', onClick }: IconProps) {
   const IconComponent = icons[name as keyof typeof icons];
   
   if (!IconComponent) {
@@ -47,5 +80,12 @@ export function Icon({ name, size = 'md', className = '' }: IconProps) {
     lg: 'w-6 h-6',
   };
 
-  return <IconComponent className={`${sizeClasses[size]} ${className}`} />;
+  return (
+    <IconComponent 
+      className={`${sizeClasses[size]} ${className} ${onClick ? 'cursor-pointer' : ''}`} 
+      onClick={onClick}
+      aria-hidden={!onClick}
+      role={onClick ? 'button' : undefined}
+    />
+  );
 }
