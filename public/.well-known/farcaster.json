@@ -10,14 +10,14 @@
     "subtitle": "Built with Zara",
     "description": "Memecoin Pulse is a Base Mini App built with Zara.",
     "iconUrl": "https://0co.to/images/zara-2.png",
-    "homeUrl": "https://a0d5bb99-ce00-40f1-bb48-279b3619781d.vistara.dev",
-    "splashImageUrl": "https://dummyimage.com/200x200/0a0b0d/ffffff.png&text=Splash",
+    "homeUrl": "https://a0d5bb99ce0040f1bb48279b3619781d-saui-ovyykejor-vistara.vercel.app",
+    "splashImageUrl": "https://a0d5bb99ce0040f1bb48279b3619781d-saui-ovyykejor-vistara.vercel.app/splash.png",
     "splashBackgroundColor": "#000000",
-    "heroImageUrl": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Hero",
+    "heroImageUrl": "https://a0d5bb99ce0040f1bb48279b3619781d-saui-ovyykejor-vistara.vercel.app/image.png",
     "tagline": "Memecoin Pulse",
     "screenshotUrls": [
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot1",
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot2"
+      "https://a0d5bb99ce0040f1bb48279b3619781d-saui-ovyykejor-vistara.vercel.app/screenshot.png",
+      "https://a0d5bb99ce0040f1bb48279b3619781d-saui-ovyykejor-vistara.vercel.app/screenshot.png"
     ],
     "primaryCategory": "social",
     "tags": [
@@ -25,6 +25,6 @@
       "miniapp",
       "onchainkit"
     ],
-    "webhookUrl": "https://a0d5bb99-ce00-40f1-bb48-279b3619781d.vistara.dev/api/webhook"
+    "webhookUrl": "https://a0d5bb99ce0040f1bb48279b3619781d-saui-ovyykejor-vistara.vercel.app/api/webhook"
   }
 }
