@@ -1,0 +1,14 @@
+{
+  "name": "Memecoin Pulse",
+  "description": "Memecoin Pulse is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://a0d5bb99-ce00-40f1-bb48-279b3619781d.vistara.dev",
+  "properties": {
+    "app": {
+      "name": "Memecoin Pulse",
+      "description": "Memecoin Pulse is a Base Mini App built with Zara.",
+      "url": "https://a0d5bb99-ce00-40f1-bb48-279b3619781d.vistara.dev",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}
